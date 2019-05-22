@@ -3,6 +3,15 @@ const router = express.Router()
 const {User} = require('../models/user')
 const { authenticateUser } = require('../middlewares/authenticate')
 
+router.get('/users-list', function(req, res){
+    User.find()
+    .then(function(user) {
+        res.send(user)
+    })
+    .catch(function(err){
+        res.send(err)
+    })
+})
 
 //localhost:3005/users/register
 router.post('/register', function(req, res){

@@ -35,6 +35,14 @@ const userSchema = new Schema({
         required : true,
         default : 'user'
     },
+    campaign : [{
+        type : Schema.Types.ObjectId,
+        ref : 'Campaign'
+    }],
+    donation : [{
+        type : Schema.Types.ObjectId,
+        ref : 'Donation'
+    }],
     tokens : [
         {
             token : {

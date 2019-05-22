@@ -59,10 +59,10 @@ class UserLogin extends React.Component {
     }
 }
 
-const mapStateToprops = (state) => {
+const mapStateToProps = (state) => {
     return {
         user : state.user
     }
 }
 
-export default connect(mapStateToprops)(UserLogin)
+export default connect(mapStateToProps)(UserLogin)

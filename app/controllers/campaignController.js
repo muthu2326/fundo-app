@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
-
+const { upload } = require('../middlewares/multer')
 const { Campaign } = require('../models/campaign')
+const { User } = require('../models/user')
 const { CampaignUpdates} = require('../models/campaign-updates')
 const { authenticateUser } = require('../middlewares/authenticate')
 
@@ -15,30 +16,41 @@ router.get('/campaigns-list', (req, res) => {
         })
 })
 
-router.post("/new", authenticateUser, (req, res) => {
-    const { title, description, targetAmount, briefStory, benficiary, accountDetails} = req.body
+router.post("/new", authenticateUser, upload,  (req, res) => {
+    const { title, description, targetAmount, imageUrl, briefStory, benficiary, accountDetails} = req.body
     const campaign = new Campaign({
         title,
         description,
         targetAmount,
         briefStory,
         benficiary,
-        accountDetails
-      })
+        accountDetails,
+        imageUrl
+    })
+    campaign.user = req.user._id
     campaign.save()
-    .then(function(campaign){
-        res.send(campaign)
-    })
-    .catch(function(err){
-        res.send(err)
-    })
+        .then(function(campaign){
+            const { user } = campaign
+            User.findById(user)
+                .then((user) => {
+                    user.campaign.push(campaign._id)
+                    user.save()
+                        .then((user) => {
+                            console.log(user)
+                        })
+                })
+                res.send(campaign)
+        })
+        .catch(function(err){
+            res.send(err)
+        })
 })
 
-router.put('/:id', function(req,res){
+router.get("/:id", (req, res) => {
     const id = req.params.id
-    const body = req.body
-
-    
+    Campaign.findById(id)
+        .then((campaign => res.send(campaign)))
+        .catch((err => res.send(err)))
 })
 
 router.post("/updates/:id", (req, res) => {
