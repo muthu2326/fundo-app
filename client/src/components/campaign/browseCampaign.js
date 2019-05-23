@@ -19,7 +19,9 @@ class BrowseCampaign extends React.Component{
                     {
                         this.props.category.map(categ=> {
                             return (
-                                <li key={categ.id}>{categ.categoryName}</li>
+                                <div key={categ.id}>
+                                    <li >{categ.categoryName}</li>
+                                </div>
                             )
                         })
                     }

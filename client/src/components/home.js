@@ -18,15 +18,16 @@ class Home extends React.Component{
     render(){
         console.log('campaigns', this.props.campaigns)
         return(
-            <div>
+            <div style={{paddingTop : '15px'}}>
                 <Carousel options={{fullWidth: true,indicators: true, duration: 3}} images={[
                         img1,img2,img3
                     ]} />
                         
                         <div className="container">
                         <h3>Trending Campigns</h3>
-                        <div class="row">
+                        <div className="row">
                         {
+   
                         this.props.campaigns.map(campaign=> {
                             return (
                                 <CampaignCard  key={campaign._id} campaign={campaign} />

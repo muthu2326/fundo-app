@@ -33,8 +33,8 @@ class CampaignCard extends React.Component{
                 <div class="card-content">
                 <p class="">{this.props.campaign.description}</p>                 
                 </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
+                <div className="card-action">
+                  <a>This is a link</a>
                 </div>
               </div>
             </div>           
