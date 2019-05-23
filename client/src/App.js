@@ -22,7 +22,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="navbar-fixed">
-        <nav className="nav-wrapper transparent ">
+        <nav className="nav-wrapper  ">
            <Link to='/' className="brand-logo">Fundo</Link>
             <a href="" className="sidenav-trigger" data-target="mobile-links">
                 <i className="material-icons">menu</i>

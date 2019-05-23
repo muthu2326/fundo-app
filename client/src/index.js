@@ -6,8 +6,8 @@ import { Provider } from 'react-redux'
 import configureStore from './redux/store/configureStore';
 import { getCurrentUser } from './redux/actions/users';
 
-const store = configureStore()
 
+const store = configureStore()
 
 store.subscribe(() => {
     console.log(store.getState())
