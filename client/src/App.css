@@ -70,4 +70,27 @@
 .auth-body{
   background: url('https://github.com/images/modules/site/heroes/simple-codelines.svg'),#2b3137;
   height: 624px;
+
+.span-card {
+  border: 1px solid black;
+  width: auto;
+}
+
+.span-card > label {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.span-card > label {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* .navbar-fixed {
+  position: absolute;
+  z-index: 999999999;
+} */
+.h2 {
+  align-content: center;
+
 }

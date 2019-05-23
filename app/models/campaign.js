@@ -2,44 +2,94 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const campaignScehma = new Schema({
-    userId: {},
-    categoryId: {},
-    title:{
-        type: String,
-        required: true
+  user : {
+    type : Schema.Types.ObjectId,
+    ref : 'User'
+  },
+  categoryId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Category'
+  },
+  title:{
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  briefStory: {
+    type: String,
+    required: true
+  },
+  imageUrl: [{
+    type : String
+  }],
+  video: {},
+  documentFiles: {},
+  targetAmount: {
+    type: Number,
+    required: true
+  },
+  recievedAmount: {
+    type: Number,
+    default: 0
+  },
+  createdAt : {
+    type : Date,
+    default : Date.now
+  },
+  benficiary: [
+    {
+      beneficiaryType : {
+        type : String
+      },
+      details: {
+        name: {
+          type: String
+        },
+        address: {
+          type: String
+        }
+      }
+    }
+  ],
+  startDate: {},
+  endDate: {},
+  donation: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Donation'
+  }],
+  comments: {
+    type: Schema.Types.ObjectId,
+    ref: 'Comment'
+  },
+  updates: [{
+    type: Schema.Types.ObjectId,
+    ref: 'CampaignUpdates'
+  }],
+  status: {
+      type: String
+  },
+  accountDetails: {
+    accountName: {
+      type: String
     },
-    description: {
-        type: String,
-        required: true
+    bankName: {
+      type: String
     },
-    briefStory: {
-        type: String,
-        required: true
+    accountNo: {
+      type: Number
     },
-    imageUrl: [{}],
-    video: {},
-    documentFiles: {},
-    targetAmount: {
-        type: Number,
-        required: true
+    branchName: {
+      type: String
     },
-    recievedAmount: {},
-    startDate: {},
-    endDate: {},
-    donations: [{}],
-    comments: {},
-    updates: [{
-        type: Schema.Types.ObjectId,
-        ref: 'CampaignUpdates'
-    }],
-    status: {},
-    benficiary: {},
-    accountDetails: {}
-})
-
-const Campaign = mongoose.model('Campign', campaignScehma)
-
-module.exports = {
-    Campaign
+    ifscCode: {
+      type: String
+    }
 }
-
+})
+const Campaign = mongoose.model('Campign', campaignScehma)
+module.exports = {
+  Campaign
+}

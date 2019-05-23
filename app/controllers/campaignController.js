@@ -7,7 +7,7 @@ const { CampaignUpdates} = require('../models/campaign-updates')
 const { authenticateUser } = require('../middlewares/authenticate')
 
 router.get('/campaigns-list', (req, res) => {
-    Campaign.find()
+    Campaign.find().populate('user')
         .then(function(campaigns){
             res.send(campaigns)
         })
@@ -17,6 +17,7 @@ router.get('/campaigns-list', (req, res) => {
 })
 
 router.post("/new", authenticateUser, upload,  (req, res) => {
+    console.log(req.files)
     const { title, description, targetAmount, imageUrl, briefStory, benficiary, accountDetails} = req.body
     const campaign = new Campaign({
         title,
@@ -48,7 +49,8 @@ router.post("/new", authenticateUser, upload,  (req, res) => {
 
 router.get("/:id", (req, res) => {
     const id = req.params.id
-    Campaign.findById(id)
+    Campaign.findOne({
+        _id: id}).populate('user')
         .then((campaign => res.send(campaign)))
         .catch((err => res.send(err)))
 })

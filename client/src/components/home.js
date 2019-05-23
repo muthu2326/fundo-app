@@ -3,13 +3,20 @@ import { Carousel } from 'react-materialize'
 import img1 from '../images/group-img.jpg'
 import img2 from '../images/makeachange.jpg'
 import img3 from '../images/takeasign.jpg'
-
-
 import Footer from './footer/footer'
 import CampaignCard from './cards/cards'
 
+import {connect} from 'react-redux'
+import { startGetCategory } from '../redux/actions/category';
+import { startGetCampaign } from '../redux/actions/campaign';
+
 class Home extends React.Component{
+    componentDidMount(){
+        this.props.dispatch(startGetCategory())
+        this.props.dispatch(startGetCampaign())
+    }
     render(){
+        console.log('campaigns', this.props.campaigns)
         return(
             <div style={{paddingTop : '15px'}}>
                 <Carousel options={{fullWidth: true,indicators: true, duration: 3}} images={[
@@ -20,12 +27,13 @@ class Home extends React.Component{
                         <h3>Trending Campigns</h3>
                         <div className="row">
                         {
-                            [1,2,3,4,5].map(num => {
-                                return (                                 
-                                    <CampaignCard />
-                                )
-                            })
-                        }
+   
+                        this.props.campaigns.map(campaign=> {
+                            return (
+                                <CampaignCard  key={campaign._id} campaign={campaign} />
+                            )
+                        })
+                    }
                         </div>
                         </div>
                 <Footer />
@@ -34,4 +42,11 @@ class Home extends React.Component{
     }
 }
 
-export default Home
+const mapStateToProps = (state) => {
+    return {
+        campaigns : state.campaign,
+        category : state.category
+    }
+}
+
+export default connect(mapStateToProps)(Home)
