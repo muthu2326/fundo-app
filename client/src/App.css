@@ -26,10 +26,48 @@
   }
 }
 
-.navbar-fixed {
-  position: absolute;
-  z-index: 999999999;
+.logo{
+  width: 3.5em;
+  margin-left: 1em;
 }
-.h2 {
-  align-content: center;
+.card-txt{
+  text-align : center;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 30px
+}
+
+.card.horizontal{
+  margin-top: -15em;
+}
+.main-txt {
+  text-align: center;
+  margin-top: 4em;
+  color: aliceblue;
+}
+.card-content{
+  font-weight: 500;
+}
+.card{
+  margin-top: 5em;
+}
+
+#button-login{
+  width: 28em;
+  margin-top: 5px;
+  margin-bottom: 15px;
+
+}
+.new-fundo{
+  margin-left: 6em;
+  margin-right: 2em;
+}
+
+#forgot-password{
+  margin-left: 17em;
+}
+
+.auth-body{
+  background: url('https://github.com/images/modules/site/heroes/simple-codelines.svg'),#2b3137;
+  height: 624px;
 }

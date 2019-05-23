@@ -11,16 +11,16 @@ import CampaignCard from './cards/cards'
 class Home extends React.Component{
     render(){
         return(
-            <div>
+            <div style={{paddingTop : '15px'}}>
                 <Carousel options={{fullWidth: true,indicators: true, duration: 3}} images={[
                         img1,img2,img3
                     ]} />
                         
                         <div className="container">
                         <h3>Trending Campigns</h3>
-                        <div class="row">
+                        <div className="row">
                         {
-                            [1,2,3,4].map(num => {
+                            [1,2,3,4,5].map(num => {
                                 return (                                 
                                     <CampaignCard />
                                 )

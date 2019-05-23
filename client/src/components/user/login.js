@@ -1,7 +1,9 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from "react-redux"
+import { Link } from 'react-router-dom'
 import { startAddUser } from '../../redux/actions/users';
+import '../../App.css';
 
 class UserLogin extends React.Component {
     constructor(props) {
@@ -38,22 +40,37 @@ class UserLogin extends React.Component {
             return <Redirect to="/home"/>
         }
         return (
-            <div>
-                <h2 align='center'>Login</h2>
-                { this.state.notice && this.state.notice }
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        Email
-                        <input type="text" value={this.state.email}  
-                        onChange={this.handleChange} name="email" placeholder='abc@gmail.com'/>
+            <div className="auth-body">
+                <div class="row">
+                    <div class="col s6 offset-s4">
+                        <div class="col s12 m8">
+                            <div class="card depth-z">
+                                <div class="card-stacked">
+                                    <div class="card-content">
+                                        <h2 className="card-txt">Login</h2>
+                                        { this.state.notice && this.state.notice }
+                                        <form onSubmit={this.handleSubmit}>
+                                            <div>
+                                                Email
+                                                <input type="text" value={this.state.email}  
+                                                onChange={this.handleChange} name="email" placeholder='abc@gmail.com'/>
+                                            </div>
+                                            <div>
+                                                Password
+                                                <input type="password" value={this.state.password} 
+                                                placeholder="********" onChange={this.handleChange} name="password" />  
+                                            </div>
+                                            <br/>
+                                            <Link id="forgot-password">Forgot password?</Link>
+                                            <button id="button-login" type="submit" class="waves-effect waves-light btn green">Login</button>
+                                            <span className="new-fundo">New to Fundo?</span><Link to='/users/register'>Register</Link>
+                                        </form> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        Password
-                        <input type="password" value={this.state.password} 
-                         placeholder="********" onChange={this.handleChange} name="password" />  
-                    </div>
-                    <button type="submit">Submit</button>
-                </form>            
+                </div>           
             </div>
         )
     }

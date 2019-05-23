@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from '../../config/axios';
+import '../../App.css';
 
 class UserRegister extends React.Component{
     constructor(){
@@ -59,34 +60,53 @@ class UserRegister extends React.Component{
     
     render(){
         return(
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <h3 align='center'>Register</h3>
-                    <p align='center'>{ this.state.notice && this.state.notice }</p>
-                        <div>
-                            Username
-                            <input type='text'onChange={this.handleChange} name='username' placeholder='abc'/>
+            <div className="auth-body">
+                <div class="row offset-s1">
+                <div class="col s6 offset-s1">
+                    <h2 className="main-txt">We are here to help you</h2>
+                </div>
+                <div class="col s6 offset-s8">
+                    <div class="col s12 m7">
+                        <div class="card horizontal">
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <form onSubmit={this.handleSubmit}>
+                                        <h5 className="card-txt">Register</h5>
+                                        <p align='center'>{ this.state.notice && this.state.notice }</p>
+                                            <div>
+                                                Username
+                                                <input type='text' onChange={this.handleChange} name='username' placeholder='abc'/>
+                                            </div>
+                                            <div >
+                                                Email
+                                                <input type='text' 
+                                                onChange={this.handleChange}
+                                                name='email' placeholder='abc@gmail.com'/>
+                                            </div>
+                                            <div >
+                                                Password
+                                                <input type={this.state.isChecked ? 'text' : 'password'} onChange={this.handleChange} name='password' placeholder='************'/>
+                                            </div>
+                                            <div >
+                                                Confirm Password
+                                                <input type={this.state.isChecked ? 'text' : 'password'} onChange={this.handleChange} name='confirmPassword' placeholder='************'/>
+                                            </div>
+                                            <br/>
+                                            <label>
+                                                <input type="checkbox"
+                                                value = {this.state.isChecked} onChange = {this.handleCheck} /><span>Show password</span>
+                                            </label>
+                                            <br/>
+                                            <br/>
+                                            <button type="submit" class="waves-effect waves-light btn blue">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <div >
-                            Email
-                            <input type='text' 
-                            onChange={this.handleChange}
-                            name='email' placeholder='abc@gmail.com'/>
-                        </div>
-                        <div >
-                            Password
-                            <input type={this.state.isChecked ? 'text' : 'password'} onChange={this.handleChange} name='password' placeholder='************'/>
-                        </div>
-                        <div >
-                            Confirm Password
-                            <input type={this.state.isChecked ? 'text' : 'password'} onChange={this.handleChange} name='confirmPassword' placeholder='************'/>
-                        </div>
-                        <div>
-                            <input type='checkbox' value = {this.state.isChecked}  onChange = {this.handleCheck} />Show password
-                        </div>
-                        <button type="submit">Submit</button>
-                    </form>
-            </div>                  
+                </div>
+                </div>
+                </div>
+            </div>               
         )
     }
 }

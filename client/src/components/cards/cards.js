@@ -11,18 +11,18 @@ class CampaignCard extends React.Component{
 
     render(){
         return (
-            <div class="col s4 m4 l3">
-              <div class="card">
-                <div class="card-image">
-                  <img src={img3} />
-                  <span class="card-title">Card Title</span>
+            <div className="col s4 m4 l3">
+              <div className="card">
+                <div className="card-image">
+                  <img src={img3} alt="campaign show"/>
+                  <span className="card-title">Card Title</span>
                 </div>
-                <div class="card-content">
+                <div className="card-content">
                   <p>I am a very simple card. I am good at containing small bits of information.
                   I am convenient because I require little markup to use effectively.</p>
                 </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
+                <div className="card-action">
+                  <a>This is a link</a>
                 </div>
               </div>
             </div>
