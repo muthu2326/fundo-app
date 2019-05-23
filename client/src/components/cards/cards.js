@@ -5,29 +5,41 @@ class CampaignCard extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            campaign: []
-        }
+            campaign: this.props.campaign,
+            loaded: false
+        }  
+    }
+
+    componentDidMount(){
+      this.setState(() => ({ isLoaded: true}))
     }
 
     render(){
+     console.log(this.state.loaded)
         return (
             <div class="col s4 m4 l3">
               <div class="card">
-                <div class="card-image">
+                <div class="card-image"> 
                   <img src={img3} />
-                  <span class="card-title">Card Title</span>
+                  <span class="card-title">{this.props.campaign.title}</span>
+                </div>
+                <div class="span-card">
+                
+                  <label ><i class="medium material-icons">account_circle</i>
+                   
+                  </label>
+                  <label> By {this.state.campaign.user.username}</label>
                 </div>
                 <div class="card-content">
-                  <p>I am a very simple card. I am good at containing small bits of information.
-                  I am convenient because I require little markup to use effectively.</p>
+                <p class="">{this.props.campaign.description}</p>                 
                 </div>
                 <div class="card-action">
                   <a href="#">This is a link</a>
                 </div>
               </div>
-            </div>
+            </div>           
         )
      }
-}
+} 
 
 export default CampaignCard
